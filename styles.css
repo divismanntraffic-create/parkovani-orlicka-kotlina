@@ -45,22 +45,28 @@ body {
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+  display: flex;
+  width: 100%;
 }
 
 .police-tape span {
   display: inline-block;
   font-weight: 900;
   font-size: 0.85rem;
-  color: #000;
+  color: #ff0000; /* Žlutý text */
+  background: #000000; /* Černé pozadí pod textem, které překryje pruhy */
+  padding: 0.2rem 1rem; /* Zvětšený padding, ať text neni nalepený na okrajích černého boxu */
+  border-radius: 3px; /* Lehce zakulacené rohy boxu */
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  animation: scroll-tape 20s linear infinite;
-  padding: 0.15rem 0;
+  padding-left: 100vw; 
+  animation: scroll-tape 30s linear infinite;
+  will-change: transform;
 }
 
 @keyframes scroll-tape {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); }
 }
 
 /* ============================================
@@ -166,19 +172,19 @@ body {
   padding: 4rem 0;
 }
 
-.section-dark {
+/* Automatické střídání pozadí u sekcí */
+section.section:nth-of-type(odd) {
   background: #0a0a0a;
 }
 
-.section-striped {
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      #0a0a0a,
-      #0a0a0a 30px,
-      #111 30px,
-      #111 60px
-    );
+section.section:nth-of-type(even) {
+  background: repeating-linear-gradient(
+    -45deg,
+    #0a0a0a,
+    #0a0a0a 30px,
+    #111 30px,
+    #111 60px
+  );
 }
 
 .section-badge {
