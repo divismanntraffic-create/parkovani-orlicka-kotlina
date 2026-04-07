@@ -200,11 +200,17 @@
   <section class="section section-striped" id="formular">
     <div class="container">
       <h2 class="section-title">Připojte se k podnětu!</h2>
+      
       <p class="form-description">Vyplněním formuláře podpoříte náš podnět na změnu pasportu komunikací. Čím více nás bude, tím větší šanci na úspěch máme!</p>
+
       <div class="form-container">
         <iframe data-tally-src="https://tally.so/embed/LZYRPj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="565" frameborder="0" marginheight="0" marginwidth="0" title="Iniciativa pro změnu pasportu ploch"></iframe>
 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
-      </div>
+      <div class="counter-decent-box">
+        <span class="counter-number" id="signature-count">0</span>
+        <span class="counter-label">sousedů už podnět podepsalo</span>  
+    </div>
+  </div>
     </div>
   </section>
 
@@ -293,6 +299,28 @@
       new BeerSlider(document.getElementById("map-compare"));
     });
   </script>
-  
+  <script>
+    async function fetchSignatureCount() {
+      try {
+        const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQgSvlbGyNJN-AKGVxp8JV3ok7J13i5R0KI99GztK-2VU75v6ZqkjMwzEgQej_91sW7YdhCV5xmOqDO/pub?gid=1642825645&single=true&output=csv';
+        
+        const response = await fetch(sheetUrl);
+        const countText = await response.text();
+        const count = parseInt(countText.trim());
+        
+        if (!isNaN(count)) {
+          document.getElementById('signature-count').innerText = count;
+        } else {
+          // Pokud je sheet prázdný nebo vrátí ne-číslo, ukáže nulu.
+          document.getElementById('signature-count').innerText = '0';
+        }
+      } catch (error) {
+        console.error('Chyba při načítání počítadla:', error);
+        // Při jakékoliv chybě ukáže nulu.
+        document.getElementById('signature-count').innerText = '0';
+      }
+    }
+    fetchSignatureCount();
+  </script>
   </body>
   </html>

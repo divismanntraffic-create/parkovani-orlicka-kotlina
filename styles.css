@@ -469,6 +469,36 @@ section.section:nth-of-type(even) {
     width: 100%;
   }
 
+  /* ============================================
+   POČÍTADLO PODPISŮ (DECENTNÍ VERZE)
+   ============================================ */
+   .counter-decent-box {
+    text-align: center;
+    margin: 0 auto 2rem auto; /* Vycentrované, zarovnané do středu */
+    padding: 0.8rem 1.2rem;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 0.9rem; /* Menší decentní velikost */
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  
+  .counter-decent-box #signature-count {
+    font-size: 1.5rem; /* Zvýrazněné číslo, ale v mezích */
+    font-weight: 900;
+    color: #ffd000;
+  }
+  
+  .counter-label {
+    color: #ccc;
+    font-weight: 400; /* Decentní text */
+  }
+
+
 /* ============================================
    KONTAKTNÍ KARTY - STYLY
    ============================================ */
@@ -599,6 +629,7 @@ section.section:nth-of-type(even) {
 .faq-item strong {
   color: #fff;
 }
+
 
 /* --- STYLY PRO SDÍLENÍ --- */
 .share-grid {
